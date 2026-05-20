@@ -1,3 +1,4 @@
+# Updated training script - CI/CD test
 import os
 from azure.ai.ml import MLClient, command, Input, Output
 from azure.ai.ml.constants import AssetTypes
