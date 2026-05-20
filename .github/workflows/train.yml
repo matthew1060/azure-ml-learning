@@ -1,0 +1,39 @@
+name: Train and Register Model
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'pipeline_scripts/**'
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Azure login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install azure-ai-ml azure-identity mlflow scikit-learn pandas joblib
+
+    - name: Submit training job to Azure ML
+      run: |
+        python .github/scripts/submit_training.py
+      env:
+        SUBSCRIPTION_ID: "749d055e-0977-4255-acd4-54c54916bff8"
+        RESOURCE_GROUP: "ml-learning-rg"
+        WORKSPACE_NAME: "ml-learning-workspace"
+        COMPUTE_NAME: "ml-compute-md"
