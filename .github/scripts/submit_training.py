@@ -46,8 +46,7 @@ job = command(
         "output_model": Output(type=AssetTypes.URI_FOLDER)
     },
     environment="azureml:credit-risk-environment:1",
-    compute=compute_name,
-    experiment_name="github-actions-training"
+    compute="ml-learning-cluster"
 )
 
 returned_job = ml_client.jobs.create_or_update(job)

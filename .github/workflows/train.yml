@@ -36,4 +36,5 @@ jobs:
         SUBSCRIPTION_ID: "749d055e-0977-4255-acd4-54c54916bff8"
         RESOURCE_GROUP: "ml-learning-rg"
         WORKSPACE_NAME: "ml-learning-workspace"
-        COMPUTE_NAME: "ml-compute-md"
+        COMPUTE_NAME: "ml-learning-cluster"
+        AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}
