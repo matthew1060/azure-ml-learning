@@ -1,4 +1,5 @@
 # Updated training script - CI/CD test
+# v2 - updated compute target to cluster
 import argparse
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
